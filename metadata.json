@@ -1,0 +1,6 @@
+{
+  "name": "Skup Mieszkań za Gotówkę Warszawa",
+  "description": "Premium landing page dla profesjonalnego skupu mieszkań za gotówkę w Warszawie i okolicach.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
