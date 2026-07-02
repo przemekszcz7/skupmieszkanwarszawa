@@ -7,14 +7,15 @@
   
   --color-gold-premium: #c8a24a;
   --color-gold-light: #e5c370;
-  --color-dark-deep: #0b0b0b;
-  --color-dark-surface: #111111;
-  --color-dark-card: #161616;
+  --color-dark-deep: #020308;
+  --color-dark-surface: #060b1e;
+  --color-dark-card: #0d1530;
 }
 
 @layer base {
   body {
-    background-color: var(--color-dark-deep);
+    background: linear-gradient(180deg, #020308 0%, #050b1e 40%, #0a112c 75%, #020308 100%);
+    background-attachment: fixed;
     color: #ffffff;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;

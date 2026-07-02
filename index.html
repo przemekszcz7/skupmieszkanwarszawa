@@ -1,14 +1,1083 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Skup Mieszkań za Gotówkę Warszawa | Szybka Wycena</title>
-    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/jZWLdKKB/481470014-122095326494797999-907440138050943582-n.jpg" />
-  </head>
-  <body class="bg-[#0b0b0b]">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skup Mieszkań za Gotówkę Warszawa | Szybka Wycena</title>
+  <link rel="icon" type="image/jpeg" href="https://i.ibb.co/jZWLdKKB/481470014-122095326494797999-907440138050943582-n.jpg">
+  
+  <!-- Premium Fonts Pairings -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
+  <style>
+    /* Theme Variables & Base */
+    :root {
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      
+      --color-gold-premium: #c8a24a;
+      --color-gold-light: #e5c370;
+      --color-dark-deep: #020308;
+      --color-dark-surface: #060b1e;
+      --color-dark-card: #0d1530;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(180deg, #020308 0%, #050b1e 40%, #0a112c 75%, #020308 100%);
+      background-attachment: fixed;
+      color: #ffffff;
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Selection & Scrollbar */
+    ::selection {
+      background-color: var(--color-gold-premium);
+      color: var(--color-dark-deep);
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--color-dark-deep);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #222222;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--color-gold-premium);
+    }
+
+    /* Grid & Layout Utilities */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    /* Header Styling */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background-color: rgba(11, 11, 11, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .logo-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid rgba(200, 162, 74, 0.5);
+      transition: border-color 0.3s ease;
+    }
+
+    .logo-container:hover .logo-img {
+      border-color: var(--color-gold-light);
+    }
+
+    .logo-text {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease;
+    }
+
+    .logo-container:hover .logo-text {
+      color: var(--color-gold-light);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #999999;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+    }
+
+    .btn-header {
+      padding: 0.5rem 1rem;
+      background-color: var(--color-gold-premium);
+      color: var(--color-dark-deep);
+      font-weight: 600;
+      font-size: 0.85rem;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+    }
+
+    .btn-header:hover {
+      background-color: var(--color-gold-light);
+      transform: translateY(-1px);
+    }
+
+    /* Ambient Lighting Background Effects */
+    .ambient-orb-1 {
+      position: absolute;
+      top: 0;
+      left: 25%;
+      width: 350px;
+      height: 350px;
+      background-color: rgba(200, 162, 74, 0.05);
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      transform: translateY(-50%);
+    }
+
+    .ambient-orb-2 {
+      position: absolute;
+      top: 45%;
+      right: 20%;
+      width: 300px;
+      height: 300px;
+      background-color: rgba(200, 162, 74, 0.03);
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 72px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 1.5rem;
+      text-align: center;
+      border-b: 1px solid rgba(255, 255, 255, 0.05);
+      overflow: hidden;
+      background: radial-gradient(circle at center, rgba(5, 11, 30, 0.5) 0%, var(--color-dark-deep) 100%);
+    }
+
+    .hero-content {
+      max-width: 850px;
+      z-index: 10;
+      animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hero-logo-wrapper {
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-logo-glow {
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      background-color: rgba(200, 162, 74, 0.15);
+      filter: blur(8px);
+    }
+
+    .hero-logo-img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--color-gold-premium);
+      position: relative;
+      z-index: 10;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-logo-wrapper:hover .hero-logo-img {
+      transform: scale(1.05);
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: 2.25rem;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--color-gold-premium) 0%, var(--color-gold-light) 50%, var(--color-gold-premium) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.9rem;
+      color: #dddddd;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 300;
+      margin-bottom: 3rem;
+    }
+
+    .hero-subtitle span {
+      color: var(--color-gold-premium);
+      margin: 0 0.5rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .btn-primary {
+      padding: 1.15rem 2rem;
+      background: linear-gradient(135deg, var(--color-gold-premium) 0%, #b38e3a 100%);
+      color: var(--color-dark-deep);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      box-shadow: 0 4px 15px rgba(200, 162, 74, 0.15);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 20px rgba(200, 162, 74, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      padding: 1.15rem 2rem;
+      background-color: rgba(17, 17, 17, 0.6);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--color-dark-surface);
+      border-color: rgba(200, 162, 74, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .hero-caption {
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: #555555;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-border {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .section-title-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title-tag span.line {
+      height: 1px;
+      width: 32px;
+      background-color: var(--color-gold-premium);
+    }
+
+    .section-title-tag span.text {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-gold-premium);
+      font-weight: 500;
+    }
+
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-cols: 1fr;
+      gap: 2.5rem;
+    }
+
+    .about-title-col h2 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1.25;
+      color: #ffffff;
+    }
+
+    .about-content-col {
+      border-left: 2px solid var(--color-gold-premium);
+      padding-left: 1.5rem;
+    }
+
+    .about-lead {
+      font-size: 1.05rem;
+      color: #dddddd;
+      line-height: 1.6;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-paragraph {
+      font-size: 0.9rem;
+      color: #888888;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* Why Us Section */
+    .why-title-area {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3.5rem auto;
+    }
+
+    .why-title-area h2 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 400;
+      margin-top: 0.5rem;
+    }
+
+    .why-title-area p {
+      font-size: 0.9rem;
+      color: #888888;
+      margin-top: 0.75rem;
+      font-weight: 300;
+    }
+
+    .why-list {
+      max-width: 800px;
+      margin: 0 auto;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .why-list-item {
+      background-color: rgba(17, 17, 17, 0.4);
+      border-left: 2px solid rgba(255, 255, 255, 0.05);
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+    }
+
+    .why-list-item:hover {
+      border-left-color: var(--color-gold-premium);
+      background-color: rgba(17, 17, 17, 0.8);
+      box-shadow: 0 0 30px rgba(200, 162, 74, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .why-list-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .why-list-no {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: rgba(200, 162, 74, 0.4);
+      transition: color 0.5s ease;
+      letter-spacing: 0.05em;
+    }
+
+    .why-list-item:hover .why-list-no {
+      color: var(--color-gold-premium);
+    }
+
+    .why-list-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      background-color: rgba(200, 162, 74, 0.05);
+      border: 1px solid rgba(200, 162, 74, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-gold-premium);
+      transition: all 0.5s ease;
+    }
+
+    .why-list-item:hover .why-list-icon {
+      transform: scale(1.1);
+      background-color: rgba(200, 162, 74, 0.15);
+      border-color: var(--color-gold-premium);
+    }
+
+    .why-list-content {
+      flex: 1;
+    }
+
+    .why-list-content h3 {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .why-list-item:hover .why-list-content h3 {
+      color: var(--color-gold-light);
+    }
+
+    .why-list-content p {
+      font-size: 0.875rem;
+      color: #999999;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    @media (min-width: 640px) {
+      .why-list-item {
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+      }
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background-color: var(--color-dark-surface);
+      position: relative;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .contact-info-col h2 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .contact-info-col p {
+      font-size: 0.9rem;
+      color: #888888;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .contact-item-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      border: 1px solid rgba(200, 162, 74, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-gold-premium);
+      flex-shrink: 0;
+    }
+
+    .contact-item-title {
+      font-size: 0.75rem;
+      color: #555555;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-item-link {
+      font-size: 1.1rem;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .contact-item-link:hover {
+      color: var(--color-gold-premium);
+    }
+
+    /* Contact Widget Column */
+    .contact-card-col {
+      background-color: rgba(11, 11, 11, 0.95);
+      border: 1px solid rgba(200, 162, 74, 0.2);
+      border-radius: 4px;
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    .contact-card-glow {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 96px;
+      height: 96px;
+      background-color: rgba(200, 162, 74, 0.03);
+      border-bottom-left-radius: 100%;
+      pointer-events: none;
+    }
+
+    .contact-card-col h3 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-card-col p {
+      font-size: 0.8rem;
+      color: #888888;
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    .contact-buttons-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .btn-contact-action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+    }
+
+    .btn-contact-call {
+      background: linear-gradient(135deg, var(--color-gold-premium) 0%, var(--color-gold-light) 100%);
+      color: var(--color-dark-deep);
+    }
+
+    .btn-contact-call:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    .btn-contact-email {
+      background-color: var(--color-dark-surface);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+    }
+
+    .btn-contact-email:hover {
+      border-color: var(--color-gold-premium);
+      transform: translateY(-1px);
+    }
+
+    .btn-contact-fb {
+      background-color: rgba(24, 119, 242, 0.1);
+      border: 1px solid rgba(24, 119, 242, 0.3);
+      color: #ffffff;
+    }
+
+    .btn-contact-fb:hover {
+      background-color: rgba(24, 119, 242, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .contact-card-footer {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
+      font-size: 0.75rem;
+      color: #555555;
+    }
+
+    /* Footer Styling */
+    footer {
+      background-color: var(--color-dark-deep);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 2.5rem 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .footer-logo-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      filter: grayscale(1);
+      opacity: 0.5;
+    }
+
+    .footer-logo-text {
+      font-family: var(--font-serif);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: #555555;
+    }
+
+    .footer-copyright {
+      font-size: 0.75rem;
+      color: #555555;
+      font-weight: 300;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      font-size: 0.75rem;
+    }
+
+    .footer-links a {
+      color: #555555;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-gold-premium);
+    }
+
+    .footer-links span {
+      color: #222222;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Design Media Queries */
+    @media (min-width: 640px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      .hero-ctas {
+        flex-direction: row;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .hero h1 {
+        font-size: 4rem;
+      }
+      .about-grid {
+        grid-template-columns: repeat(12, 1fr);
+      }
+      .about-title-col {
+        grid-column: span 5;
+      }
+      .about-content-col {
+        grid-column: span 7;
+        padding-left: 2rem;
+      }
+      .contact-grid {
+        grid-template-columns: repeat(12, 1fr);
+      }
+      .contact-info-col {
+        grid-column: span 6;
+      }
+      .contact-card-col {
+        grid-column: span 6;
+      }
+      .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    /* Subtle shimmer animation for title */
+    @keyframes shimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. HEADER -->
+  <header>
+    <div class="container header-inner">
+      <a href="#hero" class="logo-container">
+        <img class="logo-img" src="https://i.ibb.co/jZWLdKKB/481470014-122095326494797999-907440138050943582-n.jpg" alt="Skup Mieszkań Warszawa Logo">
+        <span class="logo-text">SKUP MIESZKAŃ WARSZAWA</span>
+      </a>
+      
+      <nav>
+        <a href="#o-firmie">O nas</a>
+        <a href="#dlaczego-my">Dlaczego my</a>
+        <a href="tel:790298424" class="btn-header">
+          <svg style="width:14px; height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          Zadzwoń
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BACKGROUND DECORATIONS -->
+  <div style="position: relative; width: 100%; overflow: hidden;">
+    <div class="ambient-orb-1"></div>
+    <div class="ambient-orb-2"></div>
+
+    <!-- 2. HERO SECTION -->
+    <section id="hero" class="hero">
+      <div class="container hero-content">
+        
+        <div class="hero-logo-wrapper">
+          <div class="hero-logo-glow"></div>
+          <img class="hero-logo-img" src="https://i.ibb.co/jZWLdKKB/481470014-122095326494797999-907440138050943582-n.jpg" alt="Skup Mieszkań za Gotówkę Warszawa Logo">
+        </div>
+
+        <h1>Skup Mieszkań za Gotówkę<br><span>Warszawa</span></h1>
+        
+        <p class="hero-subtitle">Szybka wycena <span>•</span> Gotówka od ręki <span>•</span> Bezpieczna transakcja</p>
+
+        <div class="hero-ctas">
+          <a href="tel:790298424" class="btn-primary">
+            <svg style="width:18px; height:18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Zadzwoń teraz
+          </a>
+          <a href="mailto:wysocki.sop@gmail.com" class="btn-secondary">
+            <svg style="width:18px; height:18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            Napisz email
+          </a>
+        </div>
+
+        <p class="hero-caption">Darmowa, niezobowiązująca konsultacja w 24h</p>
+      </div>
+    </section>
+
+    <!-- 3. ABOUT US SECTION -->
+    <section id="o-firmie" class="section-border">
+      <div class="container">
+        <div class="about-grid">
+          
+          <div class="about-title-col">
+            <div class="section-title-tag">
+              <span class="line"></span>
+              <span class="text">O firmie</span>
+            </div>
+            <h2>Profesjonalizm<br>i zaufanie na rynku nieruchomości</h2>
+          </div>
+
+          <div class="about-content-col">
+            <p class="about-lead">
+              „Profesjonalnie zajmujemy się skupem mieszkań za gotówkę na terenie Warszawy i okolic. Oferujemy szybką wycenę, bezpieczeństwo transakcji oraz pełne wsparcie na każdym etapie sprzedaży nieruchomości.”
+            </p>
+            <p class="about-paragraph">
+              Każdą transakcję traktujemy indywidualnie z zachowaniem najwyższych standardów dyskrecji. Pomagamy uregulować stan prawny, spłacić zadłużenia i kompletować niezbędne dokumenty do aktu notarialnego. Z nami przejdziesz przez cały proces szybko i bez zbędnego stresu.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. WHY US SECTION -->
+    <section id="dlaczego-my" class="section-border">
+      <div class="container">
+        
+        <div class="why-title-area">
+          <div class="section-title-tag" style="justify-content: center;">
+            <span class="line"></span>
+            <span class="text">Dlaczego my</span>
+            <span class="line"></span>
+          </div>
+          <h2>Gwarancja bezpiecznej i szybkiej sprzedaży</h2>
+          <p>Zapewniamy profesjonalizm, pełną dyskrecję i kompleksowe wsparcie na każdym kroku transakcji.</p>
+        </div>
+
+        <ul class="why-list">
+          
+          <!-- Item 1 -->
+          <li class="why-list-item" style="animation-delay: 0.1s;">
+            <div class="why-list-header">
+              <span class="why-list-no">01</span>
+              <div class="why-list-icon">
+                <svg style="width:20px; height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              </div>
+            </div>
+            <div class="why-list-content">
+              <h3>Szybka wycena</h3>
+              <p>Szacunkową wycenę nieruchomości otrzymasz nawet w ciągu kilku godzin od kontaktu. Całkowicie bezpłatnie i bez zobowiązań.</p>
+            </div>
+          </li>
+
+          <!-- Item 2 -->
+          <li class="why-list-item" style="animation-delay: 0.2s;">
+            <div class="why-list-header">
+              <span class="why-list-no">02</span>
+              <div class="why-list-icon">
+                <svg style="width:20px; height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              </div>
+            </div>
+            <div class="why-list-content">
+              <h3>Gotówka od ręki</h3>
+              <p>Płatność gotówką lub ekspresowym przelewem bezpośrednio przy podpisaniu aktu notarialnego. Nie czekasz na decyzje kredytowe.</p>
+            </div>
+          </li>
+
+          <!-- Item 3 -->
+          <li class="why-list-item" style="animation-delay: 0.3s;">
+            <div class="why-list-header">
+              <span class="why-list-no">03</span>
+              <div class="why-list-icon">
+                <svg style="width:20px; height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+            </div>
+            <div class="why-list-content">
+              <h3>Bezpieczeństwo transakcji</h3>
+              <p>Wszystkie transakcje są realizowane w renomowanych warszawskich kancelariach notarialnych, zgodnie z obowiązującym prawem.</p>
+            </div>
+          </li>
+
+          <!-- Item 4 -->
+          <li class="why-list-item" style="animation-delay: 0.4s;">
+            <div class="why-list-header">
+              <span class="why-list-no">04</span>
+              <div class="why-list-icon">
+                <svg style="width:20px; height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              </div>
+            </div>
+            <div class="why-list-content">
+              <h3>Dojazd do klienta</h3>
+              <p>Nasi eksperci dojadą do Ciebie w Warszawie i okolicach, aby obejrzeć mieszkanie i omówić szczegóły transakcji.</p>
+            </div>
+          </li>
+
+          <!-- Item 5 -->
+          <li class="why-list-item" style="animation-delay: 0.5s;">
+            <div class="why-list-header">
+              <span class="why-list-no">05</span>
+              <div class="why-list-icon">
+                <svg style="width:20px; height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+              </div>
+            </div>
+            <div class="why-list-content">
+              <h3>Dyskretna obsługa</h3>
+              <p>Szanujemy Twoją prywatność. Cała procedura przebiega bez rozgłosu, banerów reklamowych czy zbędnych telefonów od pośredników.</p>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- 5. CONTACT SECTION -->
+    <section id="kontakt" class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+          
+          <!-- Contact Info -->
+          <div class="contact-info-col">
+            <div class="section-title-tag">
+              <span class="line"></span>
+              <span class="text">Kontakt</span>
+            </div>
+            <h2>Porozmawiajmy<br>o Twojej nieruchomości</h2>
+            <p>Skontaktuj się z nami bezpośrednio. Nasi specjaliści odpowiedzą na wszystkie pytania i rozpoczną darmową procedurę wyceny nieruchomości. Bez pośpiechu, w pełnym zaufaniu.</p>
+
+            <div class="contact-list">
+              
+              <div class="contact-item">
+                <div class="contact-item-icon">
+                  <svg style="width:18px; height:18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div>
+                  <div class="contact-item-title">Zadzwoń bezpośrednio</div>
+                  <a href="tel:790298424" class="contact-item-link">790 298 424</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-item-icon">
+                  <svg style="width:18px; height:18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div>
+                  <div class="contact-item-title">Napisz wiadomość</div>
+                  <a href="mailto:wysocki.sop@gmail.com" class="contact-item-link">wysocki.sop@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-item-icon">
+                  <svg style="width:18px; height:18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </div>
+                <div>
+                  <div class="contact-item-title">Odwiedź social media</div>
+                  <a href="https://www.facebook.com/profile.php?id=61573939975769" target="_blank" rel="noreferrer noopener" class="contact-item-link" style="font-size: 0.95rem; text-decoration: underline; text-underline-offset: 4px;">Skup Mieszkań Warszawa na Facebooku</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Contact Widget Box -->
+          <div class="contact-card-col">
+            <div class="contact-card-glow"></div>
+            <h3>Darmowa wycena w 24h</h3>
+            <p>Wybierz preferowaną formę kontaktu poniżej. Jesteśmy dostępni pod telefonem i mailem przez 7 dni w tygodniu.</p>
+
+            <div class="contact-buttons-stack">
+              <a href="tel:790298424" class="btn-contact-action btn-contact-call">
+                <svg style="width:16px; height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Zadzwoń teraz
+              </a>
+
+              <a href="mailto:wysocki.sop@gmail.com" class="btn-contact-action btn-contact-email">
+                <svg style="width:16px; height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                Napisz email
+              </a>
+
+              <a href="https://www.facebook.com/profile.php?id=61573939975769" target="_blank" rel="noreferrer noopener" class="btn-contact-action btn-contact-fb">
+                <svg style="width:16px; height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                Nasz Facebook
+              </a>
+            </div>
+
+            <div class="contact-card-footer">
+              Gwarancja bezpiecznej i poufnej rozmowy wstępnej.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FOOTER -->
+    <footer>
+      <div class="container footer-inner">
+        <div class="footer-logo">
+          <img class="footer-logo-img" src="https://i.ibb.co/jZWLdKKB/481470014-122095326494797999-907440138050943582-n.jpg" alt="Logo">
+          <span class="footer-logo-text">SKUP MIESZKAŃ WARSZAWA</span>
+        </div>
+        <p class="footer-copyright">&copy; 2026 Skup Mieszkań za Gotówkę Warszawa. Wszelkie prawa zastrzeżone.</p>
+        <div class="footer-links">
+          <a href="#hero">Do góry</a>
+          <span>|</span>
+          <span style="color: #444444;">Premium Investment</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>

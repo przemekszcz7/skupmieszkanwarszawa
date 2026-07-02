@@ -4,7 +4,7 @@ export default function App() {
   const logoUrl = "https://i.ibb.co/jZWLdKKB/481470014-122095326494797999-907440138050943582-n.jpg";
 
   return (
-    <div id="landing-page" className="min-h-screen bg-dark-deep text-white font-sans selection:bg-gold-premium selection:text-dark-deep relative subtle-noise">
+    <div id="landing-page" className="min-h-screen bg-gradient-to-b from-dark-deep via-dark-surface to-dark-deep text-white font-sans selection:bg-gold-premium selection:text-dark-deep relative subtle-noise">
       
       {/* Dynamic Gold Gradient Orbs */}
       <div className="absolute top-0 left-1/4 w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full bg-gold-premium/5 blur-[120px] pointer-events-none -translate-y-1/2" />
