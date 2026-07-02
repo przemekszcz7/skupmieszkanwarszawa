@@ -27,10 +27,10 @@ export default function App() {
           </a>
           
           <nav className="flex items-center gap-4 sm:gap-6">
-            <a href="#o-firmie" className="text-xs sm:text-sm tracking-wider uppercase text-gray-400 hover:text-white transition-colors duration-300">
+            <a href="#o-firmie" className="hidden sm:inline-block text-xs sm:text-sm tracking-wider uppercase text-gray-400 hover:text-white transition-colors duration-300">
               O nas
             </a>
-            <a href="#dlaczego-my" className="text-xs sm:text-sm tracking-wider uppercase text-gray-400 hover:text-white transition-colors duration-300">
+            <a href="#dlaczego-my" className="hidden sm:inline-block text-xs sm:text-sm tracking-wider uppercase text-gray-400 hover:text-white transition-colors duration-300">
               Dlaczego my
             </a>
             <a 

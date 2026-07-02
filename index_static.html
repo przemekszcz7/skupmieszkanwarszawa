@@ -116,6 +116,13 @@
       font-weight: 500;
       letter-spacing: 0.05em;
       transition: color 0.3s ease;
+      display: none;
+    }
+
+    @media (min-width: 640px) {
+      .logo-text {
+        display: inline-block;
+      }
     }
 
     .logo-container:hover .logo-text {
@@ -135,6 +142,16 @@
       letter-spacing: 0.05em;
       color: #999999;
       transition: color 0.3s ease;
+    }
+
+    nav a:not(.btn-header) {
+      display: none;
+    }
+
+    @media (min-width: 640px) {
+      nav a:not(.btn-header) {
+        display: inline-block;
+      }
     }
 
     nav a:hover {
